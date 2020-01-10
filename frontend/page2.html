@@ -1,0 +1,174 @@
+<!DOCTYPEhtml>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Edina's IoT </title>
+	<h1> Internet of Things </h1>
+	<meta name="description"content="Edina's IoT">
+	<meta name="author"content="SitePoint">
+	<link rel="stylesheet" href = "mystyle.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	
+	<h2 colour: white>Edina's IoT project </h2>
+	
+	<h3 class="hiddenx" id='conTitle'> Connected to the <abbr title="MQ Telemetry Transport"></abbr>Mqtt Broker! </h3>
+	<p id = 'user'> </p>
+	
+
+
+
+	<fieldset style="border: 2px solid lightslategray;">
+	<legend>Accelerometer data:</legend>
+
+	<div> 
+		<i id="likeAcc" onclick="subscribeToAcc(this)" class="fa fa-thumbs-up" ></i><br>
+	</div>
+	<div> 
+		<p id='subText' class='hiddenx'>Subscribe</p>
+	</div>	
+	<table  class = "table" id="accTable">
+		<tr>
+		  <th>ax</th>
+		  <th>ay</th>
+		  <th>az</th>
+		</tr>
+		<tr>
+		  <td>   <div class="tableA" id=ax1>P </div> </td>
+		  <td>   <div class="tableA" id=ay1>P </div> </td>
+		  <td>   <div class="tableA" id=az1>P </div> </td>
+
+		</tr>
+		<tr>
+				<td>   <div class="tableA" id=ax2>P </div> </td>
+				<td>   <div class="tableA" id=ay2>P </div> </td>
+				<td>   <div class="tableA" id=az2>P </div> </td>
+		</tr>
+		<tr>
+				<td>   <div class="tableA" id=ax3>P </div> </td>
+				<td>   <div class="tableA" id=ay3>P </div> </td>
+				<td>   <div class="tableA" id=az3>P </div> </td>
+		</tr>
+	  </table> 
+
+
+	<br><br>
+
+	</fieldset>
+		<br>
+		<fieldset style="border: 2px solid lightslategray;">
+				<legend>Magnetometer data:</legend>
+			
+				<div> 
+						<i id="likeMag" onclick="subscribeToMag(this)" class="fa fa-thumbs-up" ></i><br>
+					</div>
+					<div> 
+						<p id='magSubText' class='hiddenx'>Subscribe</p>
+					</div>	
+				<table  class = "table" id="magTable">
+					<tr>
+					  <th>magx</th>
+					  <th>magy</th>
+					  <th>magz</th>
+					</tr>
+					<tr>
+					  <td>   <div class="tableA" id=mx1>P </div> </td>
+					  <td>   <div class="tableA" id=my1>P </div> </td>
+					  <td>   <div class="tableA" id=mz1>P </div> </td>
+			
+					</tr>
+					<tr>
+							<td>   <div class="tableA" id=mx2>P </div> </td>
+							<td>   <div class="tableA" id=my2>P </div> </td>
+							<td>   <div class="tableA" id=mz2>P </div> </td>
+					</tr>
+					<tr>
+							<td>   <div class="tableA" id=mx3>P </div> </td>
+							<td>   <div class="tableA" id=my3>P </div> </td>
+							<td>   <div class="tableA" id=mz3>P </div> </td>
+					</tr>
+				  </table> 
+			
+			
+				<br><br>
+			
+				</fieldset>
+					<br>	
+		
+	<fieldset style="border: 2px solid lightslategray;">
+		<legend>LED options:</legend>
+		<div> 
+			<i id="likeLED" onclick="subscribeToLED(this)" class="fa fa-thumbs-up hiddenx" ></i><br>
+		</div>
+		<div> 
+			<p id='LEDSubText' class='hiddenx'>Subscribe</p>
+		</div>	
+		
+
+
+		<div>
+			<table  class = "table" id="LEDTable">
+				<tr>
+				  <th><button id="LEDon" onclick="turnLEDon()" class="hiddenx">Letter E ON </button><br><br>
+					<button id="LEDoff" onclick="turnLEDoff()" class="hiddenx">Letter E OFF </button></th>
+				  <th><img id="myImage" src="pic_bulboff.png" style="width:200px" class="hiddenx"></th>
+				</tr>
+			  </table> 
+		
+		
+			<br><br>
+		
+			</fieldset>
+		</div>
+	
+
+	<br>
+	</fieldset>
+
+	<button id="buttonInfo" onclick="addInfoShow()" class="hiddenx">Additional Info </button>
+
+	<fieldset style="border: 2px solid lightslategray;" class="hiddenx" id="fieldInfo">
+			<legend>Info Box:</legend>
+			<div>
+			<form onsubmit=" return changeInterval()">
+				Time Interval:<br>
+				<input type="number" id = "timeInterval" min = 0 value = 8 >
+				<input type="submit" value="Submit">
+			  </form>
+			<div> 
+				<br><br>
+			<div>
+				<div class="tableB" id="infoBox">Refresh rate is 8 seconds. Energy Saving Mode OFF </div>
+			</div>
+			<div>
+				<div class="tableB" id="infoBoxA">P </div>
+			</div>
+			<div>
+				<div class="tableB" id="infoBoxB">P </div>
+			</div>
+		</fieldset>
+
+
+
+		<button id="buttonDB" onclick="dbProcessing()" class="hiddenx">Database </button>
+
+		<fieldset style="border: 2px solid lightslategray;" class="hiddenx" id="dbInfo">
+				<legend>Database Box:</legend>
+				<div>
+					<div class="tableB" id="infoBoxDB">* </div>
+				</div>
+				<button id="buttonUpdate" onclick="dbUpdate()" > Update </button>
+			</fieldset>
+
+
+	        <!-- include link to js files required -->
+			<script type="text/javascript" src="paho-mqtt.js" ></script>
+			<!--This is a reference to the Paho Javascript client side browser based library-->
+			<script type="text/javascript" src="page2.js"></script>
+
+
+			<button id="buttonDis" onclick="disconnectFromBroker()" class="hiddenx">Disconnect </button>
+	
+</body>
+</html>

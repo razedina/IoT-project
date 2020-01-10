@@ -1,0 +1,16 @@
+{
+  "name": "week8",
+  "version": "1.0.0",
+  "description": "",
+  "main": "exmple.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^3.3.5",
+    "mqtt": "^3.0.0",
+    "mysql": "^2.17.1"
+  }
+}
